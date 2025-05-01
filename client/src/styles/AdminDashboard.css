@@ -1,0 +1,43 @@
+.admin-dashboard {
+  padding: 1rem;
+}
+.admin-dashboard .tabs {
+  margin-bottom: 1rem;
+}
+.admin-dashboard .tabs button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background: #f0f0f0;
+  cursor: pointer;
+}
+.admin-dashboard .tabs button.active {
+  background: #ff8000;
+  color: #fff;
+  border-color: #e67e00;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+.admin-table th {
+  background: #f9f9f9;
+}
+.admin-table button {
+  margin-right: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  background: #ff8000;
+  color: #fff;
+  cursor: pointer;
+}
+.admin-table button:hover {
+  background: #e67e00;
+}

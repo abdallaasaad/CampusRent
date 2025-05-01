@@ -1,0 +1,1 @@
+module.exports = { jwtKey: process.env.SECRET_TOKEN_KEY };
