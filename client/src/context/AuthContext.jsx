@@ -7,8 +7,8 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser]   = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const navigate          = useNavigate();
-  const location          = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // stable logout
   const logout = useCallback(() => {
