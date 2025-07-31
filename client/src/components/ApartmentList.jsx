@@ -14,7 +14,7 @@ export default function ApartmentList() {
     const headers = token ? { "x-auth-token": token } : {};
     const url =
       `${process.env.REACT_APP_BASE_URL || "http://localhost:3001"}/cards` +
-      location.search;                         // append ?field=…&q=… or ?field=date&from=…&to=…
+      location.search;                         
 
     fetch(url, { headers })
       .then(res => {
@@ -23,14 +23,17 @@ export default function ApartmentList() {
       })
       .then(data => {
         // map to the shape ApartmentCard expects
-        const mapped = data.slice(0, 15).map(c => ({
-          id:       c._id,
-          title:    c.title,
-          location: c.location,
-          price:    c.price,
-          date:     new Date(c.createdAt).toISOString().split("T")[0],
-          image:    c.image.url
-        }));
+        const mapped = data
+          .filter(c => c._id)
+          .slice(0, 15)
+          .map(c => ({
+            id:       c._id,
+            title:    c.title,
+            location: c.location,
+            price:    c.price,
+            date:     new Date(c.createdAt).toISOString().split("T")[0],
+            image:    c.image.url
+          }));
         setApts(mapped);
       })
       .catch(console.error);
