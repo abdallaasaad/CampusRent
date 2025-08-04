@@ -184,7 +184,7 @@ export default function SignupForm() {
         {errors.houseNumber && <span className="error">{errors.houseNumber}</span>}
         <input
           type="text"
-          placeholder="ZIP (optional)"
+          placeholder="ZIP"
           value={address.zip}
           onChange={e => setAddress(a => ({ ...a, zip: e.target.value }))}
         />
