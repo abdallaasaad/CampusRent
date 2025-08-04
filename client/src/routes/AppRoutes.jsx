@@ -12,6 +12,7 @@ import MyApartments from "../pages/MyApartments";
 import EditUser from "../pages/EditUser";
 import EditCard from "../pages/EditCard";
 import AdminDashboard from "../pages/AdminDashboard";
+import Favorites from "../components/Favorites";
 
 function Protected({ children, roleCheck }) {
   const { user, token } = useContext(AuthContext);
@@ -74,19 +75,28 @@ export default function AppRoutes() {
           </Protected>
         }
       />
+      <Route
+        path="/favorites"
+        element={
+          <Protected roleCheck={u => !u.isAdmin && !u.isBusiness}>
+            <Favorites />
+          </Protected>
+        }
+      />
 
-      {/* catch-all */}
-      
-  <Route path="/admin/users/:id/edit" element={
-    <Protected roleCheck={u=>u.isAdmin}>
-      <EditUser/>
-    </Protected>
-  } />
-  <Route path="/admin/cards/:id/edit" element={
-    <Protected roleCheck={u=>u.isAdmin}>
-      <EditCard/>
-    </Protected>
-  } />
+      {/* admin edits */}
+      <Route path="/admin/users/:id/edit" element={
+        <Protected roleCheck={u=>u.isAdmin}>
+          <EditUser/>
+        </Protected>
+      } />
+      <Route path="/admin/cards/:id/edit" element={
+        <Protected roleCheck={u=>u.isAdmin}>
+          <EditCard/>
+        </Protected>
+      } />
+
+      {/* fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
